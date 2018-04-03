@@ -21,41 +21,6 @@ public class showProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_profile);
-
-/*        final SharedPreferences sharedPref = this.getSharedPreferences("shared_id",Context.MODE_PRIVATE); //to save and load small data
-        final Button button = findViewById(R.id.editButton);
-
-        String name_saved = new String();
-        String mail_saved = new String();
-        String bio_saved = new String();
-
-        name_saved = sharedPref.getString("name", null);  //get data from shared preferences
-        mail_saved = sharedPref.getString("mail", null);  //if the key is not present, it is created with the
-        bio_saved = sharedPref.getString("bio",null);     //given default value (2nd parameter)
-
-        final TextView name =  (TextView) findViewById(R.id.name);   //edit text object instances
-        name.setText(name_saved);                                    //text object initialization
-        final TextView mail =  (TextView) findViewById(R.id.mail);
-        mail.setText(mail_saved);
-        final TextView bio =  (TextView) findViewById(R.id.bio);
-        bio.setText(bio_saved);
-
-
-        button.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                Intent intent = new Intent(
-                        getApplicationContext(),
-                        editProfile.class);
-
-                startActivity(intent);
-
-            }
-        });
-
-*/
-
     }
     @Override
     protected void onResume() {

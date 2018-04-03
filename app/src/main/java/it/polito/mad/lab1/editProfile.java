@@ -24,10 +24,6 @@ import java.io.IOException;
 
 public class editProfile extends AppCompatActivity {
 
-    //private String name_saved = new String();
-    //private String mail_saved = new String();
-    //private String bio_saved = new String();
-
     static final int GALLERY_REQ = 0;
     static final int CAMERA_REQ = 1;
 
@@ -45,8 +41,6 @@ public class editProfile extends AppCompatActivity {
         EditText mail =  (EditText) findViewById(R.id.mail);
         EditText bio =  (EditText) findViewById(R.id.bio);
 
-        //final SharedPreferences sharedPref = this.getSharedPreferences("shared_id",Context.MODE_PRIVATE); //to save and load small data
-        //final SharedPreferences.Editor editor = sharedPref.edit();  //to modify shared preferences
         if (savedInstanceState != null) {
             name_saved = savedInstanceState.getString("name");
             mail_saved = savedInstanceState.getString("mail");
@@ -58,44 +52,10 @@ public class editProfile extends AppCompatActivity {
             bio_saved = sharedPref.getString("bio", null);
         }
 
-
-     //   name_saved = sharedPref.getString("name", null);  //get data from shared preferences
-     //   mail_saved = sharedPref.getString("mail", null);  //if the key is not present, it is created with the
-     //   bio_saved = sharedPref.getString("bio",null);     //given default value (2nd parameter)
-
-
-     //   final Button button = findViewById(R.id.button_done);  //button instances
-
-     //   final EditText name =  (EditText) findViewById(R.id.name);   //edit text object instances
-        name.setText(name_saved);                                    //text object initialization
-     //   final EditText mail =  (EditText) findViewById(R.id.mail);
+        name.setText(name_saved);
         mail.setText(mail_saved);
-     //   final EditText bio =  (EditText) findViewById(R.id.bio);
         bio.setText(bio_saved);
 
-
-/*        button.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                Intent intent = new Intent(
-                        getApplicationContext(),
-                        showProfile.class);
-
-
-                editor.putString("name", name.getText().toString());
-                editor.putString("mail", mail.getText().toString());
-                editor.putString("bio", bio.getText().toString());
-
-
-
-                editor.apply();
-
-                startActivity(intent);
-
-            }
-        });
-*/
         final Button photoButton = findViewById(R.id.photoSel);
 
         photoButton.setOnClickListener(new View.OnClickListener()
@@ -106,7 +66,6 @@ public class editProfile extends AppCompatActivity {
             }
 
         });
-
 
     }
 
@@ -147,34 +106,19 @@ public class editProfile extends AppCompatActivity {
         }
     }
     @Override
-    //protected void onSaveInstanceState(Bundle outState) {
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-        //super.onSaveInstanceState(outState);
         super.onSaveInstanceState(outState, outPersistentState);
 
         EditText edit_name =  (EditText) findViewById(R.id.name);
         EditText edit_mail =  (EditText) findViewById(R.id.mail);
         EditText edit_bio =  (EditText) findViewById(R.id.bio);
 
-        //outState.putString("name", name_saved);
         outState.putString("name", edit_name.getText().toString());
-        //outState.putString("mail", mail_saved);
         outState.putString("mail", edit_mail.getText().toString());
-        //outState.putString("bio", bio_saved);
         outState.putString("bio", edit_bio.getText().toString());
 
-
     }
-/*
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
 
-        savedInstanceState.getString("name", name_saved);
-        savedInstanceState.getString("mail", mail_saved);
-        savedInstanceState.getString("bio", bio_saved);
-    }
-*/
     private void selectImage() {
         final CharSequence[] items = {getResources().getString(R.string.gallery),
                 getResources().getString(R.string.photo),
